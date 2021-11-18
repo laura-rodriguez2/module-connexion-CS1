@@ -18,28 +18,29 @@ if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['
   // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
   $password = stripslashes($_REQUEST['password']);
   $password = mysqli_real_escape_string($conn, $password);
+  $id='id';
   //requéte SQL + mot de passe crypté
-    $query = "INSERT into `utilisateurs` (login, prenom, nom, password)
-            VALUES ('$login', '$prenom', '$nom', '".hash('sha256', $password)."')";
+    $query = "UPDATE utilisateurs
+            SET login = '$login', prenom = '$prenom', nom = '$nom', password = '$password'
+            WHERE id=$id";
   // Exécuter la requête sur la base de données
     $res = mysqli_query($conn, $query);
     if($res){
         echo "<div class='sucess'>
-            <h3>Vous êtes inscrit avec succès.</h3>
-            <p>Cliquez ici pour vous <a href='connexion.php'>connecter</a></p>
-        </div>";
+                <h3>Vos informations ont été enregistrées.</h3>
+            </div>";
     }
 }else{
 ?>
 <form class="box" action="" method="post">
-    <h1 class="box-title">S'inscrire</h1>
+    <h1 class="box-title">Modifier mes informations</h1>
   <input type="text" class="box-input" name="login" placeholder="Login" required />
     <input type="text" class="box-input" name="prenom" placeholder="prenom" required />
     <input type="text" class="box-input" name="nom" placeholder="nom" required />
     <input type="password" class="box-input" name="password" placeholder="Mot de passe" required />
     <input type="password" class="box-input" name="password" placeholder="Confirmez votre mot de passe" required />
-    <input type="submit" name="submit" value="S'inscrire" class="box-button" />
-    <p class="box-register">Déjà inscrit? <a href="connexion.php">Connectez-vous ici</a></p>
+    <input type="submit" name="submit" value="Enregistrer mes informations" class="box-button" />
+    <!-- <p class="box-register">Déjà inscrit? <a href="connexion.php">Connectez-vous ici</a></p> -->
 </form>
 <?php } ?>
 </body>
