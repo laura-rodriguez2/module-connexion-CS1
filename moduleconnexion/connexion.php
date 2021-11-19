@@ -38,13 +38,16 @@ if(isset($_POST['submit'])) { // si le bouton "Connexion" est appuyé
             }
             else {
                     // on ouvre la session avec $_SESSION:
-                    $_SESSION['login'] = $login; // la session peut être appelée différemment et son contenu aussi peut être autre chose que le pseudo
+                     // la session peut être appelée différemment et son contenu aussi peut être autre chose que le pseudo
                     header("location: profil.php");
                     echo "Vous êtes à présent connecté !";
+          
                 }
             }
         }
-    }
+    }          
+    // Trouver un moyen de ne pas acceder a la page admin si on ne l'est pas !!
+    // Trouver un moyen de pas pouvoir s'inscrire avec le même login, mdp ect..
 }
 ?>
 <!DOCTYPE html>
