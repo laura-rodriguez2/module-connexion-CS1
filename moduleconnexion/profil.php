@@ -45,7 +45,6 @@ if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['
 </head>
 <body>
 <header>
-  <p>enizedjzendjizeidzeidioze</p>
 </header>
 </body>
 </html>

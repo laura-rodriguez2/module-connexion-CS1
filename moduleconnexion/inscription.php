@@ -24,11 +24,13 @@ if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['
   // Exécuter la requête sur la base de données
     $res = mysqli_query($conn, $query);
     if($res){
+      
         echo "<div class='sucess'>
             <h3>Vous êtes inscrit avec succès.</h3>
             <p>Cliquez ici pour vous <a href='connexion.php'>connecter</a></p>
         </div>";
     }
+    
 }else{
 ?>
 <form class="box" action="" method="post">
