@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css" />
-</head>
-<body>
+
 <?php
 require('index.php');
 if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'])){
@@ -43,5 +38,14 @@ if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['
     <!-- <p class="box-register">Déjà inscrit? <a href="connexion.php">Connectez-vous ici</a></p> -->
 </form>
 <?php } ?>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <p>enizedjzendjizeidzeidioze</p>
+</header>
 </body>
 </html>
