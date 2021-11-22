@@ -1,6 +1,7 @@
 
 <?php
 require('index.php');
+session_start();
 if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'])){
   // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
   $login = stripslashes($_REQUEST['login']);

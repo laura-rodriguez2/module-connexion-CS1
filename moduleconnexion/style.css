@@ -1,0 +1,16 @@
+/* header */
+h1{
+    display: flex;
+    justify-content: center;
+    
+}
+#header_la{
+    display: flex;
+    justify-content:space-around;
+}
+.header_li{
+
+}
+.header_a{
+
+}
