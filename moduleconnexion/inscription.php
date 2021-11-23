@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css" />
-</head>
-<body>
 <?php
 require('index.php');
 if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'])){
@@ -32,6 +26,13 @@ if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['
     
   }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
 <form class="box" action="" method="post">
     <h1 class="box-title">S'inscrire</h1>
   <input type="text" class="box-input" name="login" placeholder="Login" required />
@@ -42,6 +43,6 @@ if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['
     <input type="submit" name="submit" value="S'inscrire" class="box-button" />
     <p class="box-register">Déjà inscrit? <a href="connexion.php">Connectez-vous ici</a></p>
 </form>
-<?php  ?>
+</main>
 </body>
 </html>

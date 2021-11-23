@@ -1,33 +1,55 @@
-/* header */
+/* HEADER ACCUEIL */
 *{
     padding: 0;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+    list-style-type: none;   
+    text-decoration: none;
+    color: black;
 }
 #h1{
     display: flex;
     justify-content: center;
     background-color: aqua;
     height: 10%;
-    padding-top: 2%;
+    padding-top: 1%;
+    font-size: 250%;
 }
 #header_la{
-    background-color: blueviolet;
+    background-color: rgb(200, 140, 255);
 }
 #header_nav{
-    background-color: rgb(121, 121, 153);    
-    height: 10%;
-    padding-top: 3%;
+    background-color: rgb(51, 51, 126);    
+    height: 7%;
+    padding-top: 2%;
 }
 #header_ul{
     display: flex;
     flex-direction: row;
     justify-content:space-around;
-}
-.header_li{
-    
+    font-size: 135%;
+
 }
 .header_a{
-    text-decoration: none;
-    color: black;
+    background-color: azure;
+    padding: 7%;
+    border-radius: 20%;
+}
+
+/* MAIN ACCUEIL */
+
+#main_la{
+height: 75%;
+background-color: brown;
+}
+/* FOOTER ACCUEIL */
+#footer_la{
+    background-color: rgb(121, 121, 153);    
+    height: 15%;
+    padding-top: 1%;
+}
+#footer_ul{
+    padding-left: 20%;
+    background-color: chartreuse;
+    font-size: 115%;
 }
