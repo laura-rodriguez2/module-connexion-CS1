@@ -53,3 +53,32 @@ background-color: brown;
     background-color: chartreuse;
     font-size: 115%;
 }
+
+
+
+/* PAGE INSCRIPTION  */
+    /* FORM */
+
+#form_inscription{
+    background-color: cornsilk;
+    /* padding-left: 30%; */
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 5%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-around; */
+}
+.box-input{
+    padding: 1%;
+    margin: 5px;
+}
+.box_button{
+    background-color: crimson;
+    border-radius: 20%;
+    font-size: 120%;
+    padding: 1%;
+}
+.color_link{
+    color: rgb(61, 56, 139);
+}
