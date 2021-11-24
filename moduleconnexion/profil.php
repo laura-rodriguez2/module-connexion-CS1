@@ -5,10 +5,9 @@ define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'moduleconnexion');
+$mysqli = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-if($conn === false){
+if($mysqli === false){
     die("ERREUR : Impossible de se connecter. " . mysqli_connect_error());
 }
 
@@ -38,6 +37,8 @@ if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['
     }
 }else{
 }
+
+//element a modifier : login, nom, prenom pas le mdp
 ?>
 <html>
     <head>
@@ -46,7 +47,7 @@ if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['
     </head>
     <body>
         <header id="header_la">     
-            <h1 id="h1">Titre</h1>
+            <h1 id="h1">Module de connexion</h1>
             <nav id="header_nav">
                 <ul id="header_ul">
                     <li><a class="header_a" href="index.php">Accueil</a>
@@ -57,24 +58,25 @@ if (isset($_REQUEST['login'], $_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['
             </nav>
         </header>
         <main id="main_la">
+          <div id="deplacement_form">
           <form id="form_inscription" action="" method="post">
-              <h1 id="h1_inscription">Modifier mes informations</h1><br>
-            <input type="text" class="box-input" name="login" placeholder="Login" required /><br>
-              <input type="text" class="box-input" name="prenom" placeholder="prenom" required /><br>
-              <input type="text" class="box-input" name="nom" placeholder="nom" required /><br>
-              <input type="password" class="box-input" name="password" placeholder="Mot de passe" required /><br>
-              <input type="password" class="box-input" name="password" placeholder="Confirmez votre mot de passe" required /><br><br>
-              <input type="submit" name="submit" value="Enregistrer mes informations" class="box_button" /><br>
-              <!-- <p class="box-register">Déjà inscrit? <a href="connexion.php">Connectez-vous ici</a></p> -->
+              <h2 id="h1_inscription">Modifier mes informations</h1><br>
+                <input type="text" class="box-input" name="login" placeholder="Login" required /><br>
+                <input type="text" class="box-input" name="prenom" placeholder="prenom" required /><br>
+                <input type="text" class="box-input" name="nom" placeholder="nom" required /><br>
+                <input type="password" class="box-input" name="password" placeholder="Mot de passe" required /><br>
+                <input type="password" class="box-input" name="password" placeholder="Confirmez votre mot de passe" required /><br><br>
+                <input type="submit" name="submit" value="Enregistrer mes informations" class="box_button" /><br>
           </form>
+        </div>
         </main>
         <footer id="footer_la">
             <nav id="footer_nav">
                 <ul id="footer_ul">
                     <h2 id="h2">Réseaux Sociaux</h2>
-                    <li><a href="https://twitter.com/home">Twitter</li>
-                    <li><a href="https://www.instagram.com/aik0sann/?hl=fr">Instagram</li>
-                    <li><a href="https://github.com/laura-rodriguez2/module-connexion">GitHub</li>
+                      <li><a href="https://twitter.com/home">Twitter</li>
+                      <li><a href="https://www.instagram.com/aik0sann/?hl=fr">Instagram</li>
+                      <li><a href="https://github.com/laura-rodriguez2/module-connexion">GitHub</li>
                 </ul>
             </nav>
         </footer>
