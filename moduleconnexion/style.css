@@ -70,19 +70,11 @@ background-size: 100%;
     
 }
 #form_inscription{
-    /* trouver un moyen de centrer le formulaire et le fond */
     background-color: rgb(37, 37, 37);
-    /* color: orange !important;     */
     padding: 3%;
     border-radius: 5%;
     font-size: 150%;
     text-align: center;
-    /* padding-left: 30%; */
-
-  
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: space-around; */
 }
 .box-input{
     padding: 1%;
