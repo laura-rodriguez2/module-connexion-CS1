@@ -90,3 +90,7 @@ background-size: 100%;
 .color_link{
     color: rgb(230, 138, 0);
 }
+#message_form{
+    text-align: center;
+    background-color: aqua;
+}

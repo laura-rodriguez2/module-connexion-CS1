@@ -1,49 +1,43 @@
-<?php 
-require("index.php");
-session_start();
-$requete = mysqli_query($conn,"SELECT * FROM utilisateurs");
-$utilisateurs = mysqli_fetch_all($requete,MYSQLI_ASSOC);
+<?php
+$bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion', 'root', '');
 
-// if(($_POST["id"])==1){
-    
-// }
-// else{
-//     exit;
-// }
-// si id nest pas1
-// ==1
-// sinon si c 1 montrer la page
-// exit
+if(isset($_GET['type']) AND $_GET['type'] == 'utilisateurs') {
+
+   }
+   if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
+      $supprime = (int) $_GET['supprime'];
+      $req = $bdd->prepare('DELETE FROM utilisateurs WHERE id = ?');
+      $req->execute(array($supprime));
+   }
+
+   if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
+      $supprime = (int) $_GET['supprime'];
+      $req = $bdd->prepare('DELETE FROM commentaires WHERE id = ?');
+      $req->execute(array($supprime));
+   }
+
+$membres = $bdd->query('SELECT * FROM utilisateurs ORDER BY id DESC LIMIT 0,5');
+
 ?>
+<!DOCTYPE html>
 <html>
-    <header>
-        jj
-    </header>
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Login</th>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Password</th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php 
-        foreach($utilisateurs as $utilisateur){
-            echo '<tr>';
-            echo '<td>'.$utilisateur['id'].' '.'</td>';   
-            echo '<td>'.$utilisateur['login'].' '.'</td>';
-            echo '<td>'.$utilisateur['prenom'].' '.'</td>';
-            echo '<td>'.$utilisateur['nom'].' '.'</td>';
-            echo '<td>'.$utilisateur['password'].' '.'</td>';
-            echo '</tr>';
-        }
-?>
-    </tbody>
-</table>
+<head>
+   <meta charset="utf-8" />
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <title>Administration</title>
+</head>
+<header>
+    <h1>Administration</h1>
+</header>
+<body>
+  <div id="admin">
+    <ul>
+        <?php while($m = $membres->fetch()) { ?>
+        <li><?= $m['id'] ?> : <?= $m['login'] ?> - <a href="index.php?type=supprime=<?= $m['id'] ?>">Supprimer</a></li>
+        <?php } ?>
+    </ul>
+    <br /><br />
+    <a href="deconnexion"><input type="button" value="Déconnexion"></a>
+  </div>
+</body>
 </html>
-
-
-
