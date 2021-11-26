@@ -1,20 +1,6 @@
 <?php
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'moduleconnexion');
-$mysqli = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-if($mysqli === false){
-    die("ERREUR : Impossible de se connecter. " . mysqli_connect_error());
-}
-
-if(isset($_POST['Login'])){
-    //enlever bouton inscription et connexion(le changer par déconnexion) dans le header
-}
-else{
-    //afficher
-}
+session_start();
+$bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion', 'root', ''); //Connexion à la base de données
 ?>
 <html>
     <head>

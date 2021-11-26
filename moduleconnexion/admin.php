@@ -1,22 +1,7 @@
 <?php
 $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion', 'root', '');
 
-if(isset($_GET['type']) AND $_GET['type'] == 'utilisateurs') {
-
-   }
-   if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
-      $supprime = (int) $_GET['supprime'];
-      $req = $bdd->prepare('DELETE FROM utilisateurs WHERE id = ?');
-      $req->execute(array($supprime));
-   }
-
-   if(isset($_GET['supprime']) AND !empty($_GET['supprime'])) {
-      $supprime = (int) $_GET['supprime'];
-      $req = $bdd->prepare('DELETE FROM commentaires WHERE id = ?');
-      $req->execute(array($supprime));
-   }
-
-$membres = $bdd->query('SELECT * FROM utilisateurs ORDER BY id DESC LIMIT 0,5');
+$membres = $bdd->query('SELECT * FROM utilisateurs ORDER BY id DESC LIMIT 0,5'); //requete pour récuperer les informations des membres
 
 ?>
 <!DOCTYPE html>
@@ -26,18 +11,38 @@ $membres = $bdd->query('SELECT * FROM utilisateurs ORDER BY id DESC LIMIT 0,5');
    <link rel="stylesheet" type="text/css" href="style.css">
    <title>Administration</title>
 </head>
-<header>
-    <h1>Administration</h1>
+<body> 
+<header id="header_la">     
+   <h1 id="h1">Module de connexion</h1>
+      <nav id="header_nav">
+         <ul id="header_ul">
+            <li><a class="header_a" href="index.php">Accueil</a>
+            <li><a class="header_a" href="inscription.php">Inscription</a></li>
+            <li><a class="header_a" href="connexion.php">Connexion</a></li>
+            <li><a class="header_a" href="profil.php">Profil</a></li>
+         </ul>   
+      </nav>
 </header>
-<body>
-  <div id="admin">
-    <ul>
-        <?php while($m = $membres->fetch()) { ?>
-        <li><?= $m['id'] ?> : <?= $m['login'] ?> - <a href="index.php?type=supprime=<?= $m['id'] ?>">Supprimer</a></li>
-        <?php } ?>
-    </ul>
-    <br /><br />
-    <a href="deconnexion"><input type="button" value="Déconnexion"></a>
-  </div>
+<main id="main_la">
+   <div id="admin_main">   
+      <h1 id="h1_inscription">Administration</h1> <br>
+         <ul>
+            <?php while($m = $membres->fetch()) { ?>
+            <li><?= $m['id'] ?>- LOGIN : <?= $m['login'] ?> PRENOM :<?= $m['prenom'] ?> NOM :<?= $m['nom'] ?></a></li>
+            <?php } ?>
+         </ul><br>
+      <a href="deconnexion.php"><input class="box_button" type="button" value="Déconnexion"></a>
+   </div>
+</main>
+   <footer id="footer_la">
+      <nav id="footer_nav">
+         <ul id="footer_ul">
+            <h2 id="h2">Réseaux Sociaux</h2>
+               <li><a href="https://twitter.com/home">Twitter</li>
+               <li><a href="https://www.instagram.com/aik0sann/?hl=fr">Instagram</li>
+               <li><a href="https://github.com/laura-rodriguez2/module-connexion">GitHub</li>
+         </ul>
+      </nav>
+   </footer>
 </body>
 </html>

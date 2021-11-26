@@ -1,7 +1,7 @@
 <?php
     $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion', 'root', '');
         if (isset($_POST['submit'])){
-            $erreur = "";
+            $erreur = "";  
             $login = htmlspecialchars($_POST['login']);
             $prenom = htmlspecialchars($_POST['prenom']);
             $nom = htmlspecialchars($_POST['nom']);
@@ -9,8 +9,8 @@
             $confirmation = htmlspecialchars ($_POST['password2']);
 
         if (!empty($_POST['login']) AND !empty($_POST['prenom']) AND !empty($_POST['nom']) AND !empty($_POST['password']) AND !empty($_POST['password2'])){
-            $loginlenght = strlen($login);
-            $requete=$bdd->prepare("SELECT * FROM utilisateurs WHERE login = ? ");
+            $loginlenght = strlen($login);  //Permet de calculer la longueur du login
+            $requete=$bdd->prepare("SELECT * FROM utilisateurs WHERE login = ? "); 
             $requete->execute(array($login));
             $loginexist= $requete->rowCount();
 
@@ -37,6 +37,7 @@
     <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css" />
+    <title>Inscription</title>
     </head>
     <body>
         <header id="header_la">     

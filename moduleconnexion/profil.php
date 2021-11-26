@@ -23,23 +23,21 @@ if(isset($_SESSION['id']) && $_SESSION['id'] > 0){
         header('Location: profil.php');
         }
     }
-    if(isset($_POST['newnom']) && !empty($_POST['newnom']) && $_POST['newnom'] != $infoutilisateur['nom'])
-    {
+    if(isset($_POST['newnom']) && !empty($_POST['newnom']) && $_POST['newnom'] != $infoutilisateur['nom']){
         // Créer une nouvelle session avec le nouveau nom
         $newnom = htmlspecialchars($_POST['newnom']);
         $insertnom = $bdd->prepare("UPDATE utilisateurs SET nom = ? WHERE id = ?");
         $insertnom->execute(array($newnom, $_SESSION['id']));
         header('Location: profil.php');
     }
-    if(isset($_POST['newprenom']) && !empty($_POST['newprenom']) && $_POST['newprenom'] != $infoutilisateur['prenom'])
-    {
+    if(isset($_POST['newprenom']) && !empty($_POST['newprenom']) && $_POST['newprenom'] != $infoutilisateur['prenom']){
         // Créer une nouvelle session avec le nouveau prenom
         $newprenom = htmlspecialchars($_POST['newprenom']);
         $insertprenom = $bdd->prepare("UPDATE utilisateurs SET prenom = ? WHERE id = ?");
         $insertprenom->execute(array($newprenom, $_SESSION['id']));
         header('Location: profil.php');
     }
-    if(isset($_POST['newmdp']) && !empty($_POST['newmdp']) && isset($_POST['newmdp2']) && !empty($_POST['newmdp2'])) { //Confirmation des 2 mdp
+    if(isset($_POST['newmdp']) && !empty($_POST['newmdp']) && isset($_POST['newmdp2']) && !empty($_POST['newmdp2'])){ //Confirmation des 2 mdp
     $mdp1 = $_POST['newmdp'];
     $mdp2 = $_POST['newmdp2'];
         
@@ -63,11 +61,10 @@ if(isset($_SESSION['id']) && $_SESSION['id'] > 0){
 <html>
     <head>
     <link rel="stylesheet" href="style.css">
-        <title>Edition du profil</title>
-        <meta charset="utf-8">
+        <meta charset="utf-8">        
+        <title>Profil</title>
     </head>
     <body>
-        <header>
         <header id="header_la">     
             <h1 id="h1">Module de connexion</h1>
             <nav id="header_nav">
@@ -79,71 +76,44 @@ if(isset($_SESSION['id']) && $_SESSION['id'] > 0){
                 </ul>   
             </nav>
         </header>
-        </header>
-            <div id="editer">
-            <form method="POST" action="">
-            <table> 
-                <h1>Editer son profil</h1>
-                <br />
-                <tr>
-                    <td align="right">    
-                    <label for="login">Login :</label><br /><br />
-                    </td>
-                    <td>
-                    <input type="text" name="newlogin" placeholder="Login" value="<?php echo $infoutilisateur['login']; ?>"> <br /><br />
-                    </td>
-                    </tr>
-                    <td align="right">    
-                    <label for="prenom">Prenom :</label><br /><br />
-                    </td>
-                    <td>
-                    <input type="text" name="newnom" placeholder="Nom" value="<?php echo $infoutilisateur['nom']; ?>"> <br /><br />
-                    </td>
-                    </tr>
-                    <td align="right">    
-                    <label for="nom">Nom :</label><br /><br />
-                    </td>
-                    <td>
-                    <input type="text" name="newprenom" placeholder="Prenom" value="<?php echo $infoutilisateur ['prenom']; ?>"> <br /><br />
-                    </td>
-                    </tr>
-                    <td align="right">    
-                    <label for="newmdp">Password :</label><br /><br />
-                    </td>
-                    <td>
-                    <input type="password" name="newmdp" placeholder="Mot de passe" > <br /><br />
-                    </td>
-                    </tr>
-                    <td align="right">    
-                    <label for="newmdp2">Confirmation du password :</label><br /><br />
-                    </td>
-                    <td>
-                    <input type="password" name="newmdp2" placeholder="Confirmation mot de passe" > <br /><br />
-                    </td>
-                </tr>
-            </table>
+        <main id="main_la">
+            <div id="deplacement_form">
+                <form id="form_inscription" action="" method="post">
+                    <?php 
+                    if(isset($msg))
+                    {
+                    echo '<font color="red">'.$msg.'</font><br /><br />'; 
+                    }
+                    ?>
+                    <h2 id="h1_inscription">Modifier mes informations</h1><br>
+                        <input type="text" class="box-input" name="newlogin" placeholder="Login" required /><br>
+                        <input type="text" class="box-input" name="newprenom" placeholder="prenom" required /><br>
+                        <input type="text" class="box-input" name="newnom" placeholder="nom" required /><br>
+                        <input type="password" class="box-input" name="newmdp" placeholder="Mot de passe" required /><br>
+                        <input type="password" class="box-input" name="newmdp2" placeholder="Confirmez votre mot de passe" required /><br><br>
+                        <input type="submit" name="submit" value="Enregistrer mes informations" class="box_button" /><br>
+                        <a href="deconnexion.php"><input class="box_button" type="button" value="Déconnexion"></a>
 
-            <?php 
-        if(isset($msg))
-        {
-        echo '<font color="red">'.$msg.'</font><br /><br />'; 
-        }
-        ?>
-            <a href="profil.php">
-            <input type="submit" name="confirmation" value="Confirmer">
-            </a>
-            <br><br>
-            <form method="POST" action="profil.php">
-            <input type="submit" name="Retour" value="Retour" >
-            </form>
+                </form>
         </div>
+        </main>
+        <footer id="footer_la">
+            <nav id="footer_nav">
+                <ul id="footer_ul">
+                    <h2 id="h2">Réseaux Sociaux</h2>
+                    <li><a href="https://twitter.com/home">Twitter</li>
+                    <li><a href="https://www.instagram.com/aik0sann/?hl=fr">Instagram</li>
+                    <li><a href="https://github.com/laura-rodriguez2/module-connexion">GitHub</li>
+                </ul>
+            </nav>
+        </footer>
     </body>
 </html>
 <?php
 }
 else 
 {
-header("Location: connexion.php");
+header("Location: connexion.php"); //Si l'utilisateur n'est pas connecter, alors il sera renvoyer sur connexion.php
 }
 
 ?>

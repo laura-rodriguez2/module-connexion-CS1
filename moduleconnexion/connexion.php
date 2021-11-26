@@ -3,37 +3,37 @@ session_start();
 $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion', 'root', '');
 
 if(isset($_POST['submit'])){
-    $login = htmlspecialchars($_POST['login']);
+    $login = htmlspecialchars($_POST['login']); 
     $password = $_POST['password'];
     
     if(!empty($login) AND !empty($password)){
         $requeteutilisateur = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ?"); // Vérifier si le login est le même que dans la base de données
         $requeteutilisateur->execute(array($login));  
         $result = $requeteutilisateur->fetchAll();  
-                if (count($result) > 0){  // S'il n'y a pas de login trouvé dans la bdd, alors ça retourne "Mauvais Login"
-                    $sqlPassword = $result[0]['password'];
-                    if(password_verify($password, $sqlPassword)){ // Permet de vérifier si les 2 mots de passes sont identiques
-                        $_SESSION['id'] = $result[0]['id'];  //créé une session avec les éléments de la table utilisateurs
-                        $_SESSION['login'] = $result[0]['login'];
-                        $_SESSION['nom'] = $result[0]['nom'];
-                        $_SESSION['prenom'] = $result[0]['prenom'];
+            if (count($result) > 0){  // S'il n'y a pas de login trouvé dans la bdd, alors ça retourne "Mauvais Login"
+                $sqlPassword = $result[0]['password'];
+                if(password_verify($password, $sqlPassword)){ // Permet de vérifier si les 2 mots de passes sont identiques
+                    $_SESSION['id'] = $result[0]['id'];  //créé une session avec les éléments de la table utilisateurs
+                    $_SESSION['login'] = $result[0]['login'];
+                    $_SESSION['nom'] = $result[0]['nom'];
+                    $_SESSION['prenom'] = $result[0]['prenom'];
                         header("Location: profil.php");   //Redirige sur la page profil
-                    }
-                    else{ $erreur = "Mauvais login !"; }
                 }
-                    else{ $erreur = "Mauvais mot de passe !"; }
-                    
-                    if ($_SESSION['login'] == 'admin'){  //Si le login et le mdp rentré est "admin" alors ça redirige sur la page admin à la place de profil.php
-                        header("Location: admin.php");
-                    }
+                else{ $erreur = "Mauvais login !"; }
+            }
+                else{ $erreur = "Mauvais mot de passe !"; }
+                if ($_SESSION['login'] == 'admin'){  //Si le login et le mdp rentré est "admin" alors ça redirige sur la page admin à la place de profil.php
+                    header("Location: admin.php");
+                }
     }
-                    else{ $erreur = "Tous les champs doivent être remplis !"; }
+                else{ $erreur = "Tous les champs doivent être remplis !"; }
 }
 ?>
 <html>
     <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css" />
+    <title>Connexion</title>
     </head>
     <body>
         <header id="header_la">     
@@ -50,11 +50,11 @@ if(isset($_POST['submit'])){
         <main id="main_la">
             <div id="deplacement_form">
                 <form id="form_inscription" action="" method="post" name="login">
-                <div style="color: yellow;"><?php
-                    if (isset($erreur)){
-                        echo $erreur;
-                    }
-                ?></div>
+                    <div style="color: yellow;"><?php
+                        if (isset($erreur)){
+                            echo $erreur;
+                        }
+                    ?></div>
                     <h2 id="h1_inscription">Connexion</h1><br>
                         <input type="text" class="box-input" name="login" placeholder="Login" required><br>
                         <input type="password" class="box-input" name="password" placeholder="Mot de passe" required><br><br>

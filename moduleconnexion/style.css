@@ -59,7 +59,7 @@ background-size: 100%;
 
 
 
-/* PAGE INSCRIPTION  */
+/* PAGE INSCRIPTION CONNEXION PROFIL ET ADMIN */
     /* FORM */
 #deplacement_form{
     display: flex;
@@ -93,4 +93,12 @@ background-size: 100%;
 #message_form{
     text-align: center;
     background-color: aqua;
+}
+
+/* SEULEMENT POUR PAGE ADMIN */
+
+#admin_main{
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
