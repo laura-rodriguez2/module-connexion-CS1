@@ -1,6 +1,6 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion', 'root', '');
-
+// $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion', 'root', ''); 
+$bdd = new PDO('mysql:host=localhost;dbname=laura-rodriguez_moduleconnexion', 'Laura', 'Rodriguez'); //Connexion à la base de données
 $membres = $bdd->query('SELECT * FROM utilisateurs ORDER BY id DESC LIMIT 0,5'); //requete pour récuperer les informations des membres
 
 ?>

@@ -1,6 +1,8 @@
 <?php
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion', 'root', ''); //Connexion à la base de données
+// $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion', 'root', ''); 
+$bdd = new PDO('mysql:host=localhost;dbname=laura-rodriguez_moduleconnexion', 'Laura', 'Rodriguez'); //Connexion à la base de données
+
 ?>
 <html>
     <head>
